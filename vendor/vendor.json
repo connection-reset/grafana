@@ -455,6 +455,24 @@
 			"revisionTime": "2017-02-16T22:56:31Z"
 		},
 		{
+			"checksumSHA1": "2SyY8LpzxtFHo9yLZp4n1SdC65A=",
+			"path": "github.com/influxdata/influxdb/client/v2",
+			"revision": "6d93507389b39eaefd2b84c9ad96372c974d4586",
+			"revisionTime": "2017-10-10T16:44:31Z"
+		},
+		{
+			"checksumSHA1": "B2GdWArh5PjvZJILHdaxDZEK9aI=",
+			"path": "github.com/influxdata/influxdb/models",
+			"revision": "6d93507389b39eaefd2b84c9ad96372c974d4586",
+			"revisionTime": "2017-10-10T16:44:31Z"
+		},
+		{
+			"checksumSHA1": "H/J/qLqzUONXIecHHKtVZmxJZZA=",
+			"path": "github.com/influxdata/influxdb/pkg/escape",
+			"revision": "6d93507389b39eaefd2b84c9ad96372c974d4586",
+			"revisionTime": "2017-10-10T16:44:31Z"
+		},
+		{
 			"checksumSHA1": "BM6ZlNJmtKy3GBoWwg2X55gnZ4A=",
 			"path": "github.com/klauspost/crc32",
 			"revision": "1bab8b35b6bb565f92cbc97939610af9369f942a",
@@ -468,21 +486,18 @@
 		},
 		{
 			"checksumSHA1": "jaCQF1par6Jl8g+V2Cgp0n/0wSc=",
-			"origin": "github.com/grafana/grafana/vendor/github.com/lib/pq/hstore",
 			"path": "github.com/lib/pq/hstore",
 			"revision": "23da1db4f16d9658a86ae9b717c245fc078f10f1",
 			"revisionTime": "2017-09-18T17:50:43Z"
 		},
 		{
 			"checksumSHA1": "mJHrY33tDs2MRhHt+XunkRF/5ek=",
-			"origin": "github.com/grafana/grafana/vendor/github.com/lib/pq/listen_example",
 			"path": "github.com/lib/pq/listen_example",
 			"revision": "23da1db4f16d9658a86ae9b717c245fc078f10f1",
 			"revisionTime": "2017-09-18T17:50:43Z"
 		},
 		{
 			"checksumSHA1": "AU3fA8Sm33Vj9PBoRPSeYfxLRuE=",
-			"origin": "github.com/grafana/grafana/vendor/github.com/lib/pq/oid",
 			"path": "github.com/lib/pq/oid",
 			"revision": "23da1db4f16d9658a86ae9b717c245fc078f10f1",
 			"revisionTime": "2017-09-18T17:50:43Z"
