@@ -421,6 +421,22 @@
 			"path": "github.com/gorilla/websocket",
 			"revision": "3ab3a8b8831546bd18fd182c20687ca853b2bb13",
 			"revisionTime": "2016-12-15T22:53:35Z"
+			"checksumSHA1": "l/U+l0N19VlD+pPZUcgT1E5n4QQ=",
+			"path": "github.com/influxdata/influxdb/client/v2",
+			"revision": "be41e41caecaa528b3cdeec872f0fd95528b315d",
+			"revisionTime": "2016-09-05T13:09:19Z"
+		},
+		{
+			"checksumSHA1": "WJJlqwMqmO8A5HZmVSO7dJhCeko=",
+			"path": "github.com/influxdata/influxdb/models",
+			"revision": "be41e41caecaa528b3cdeec872f0fd95528b315d",
+			"revisionTime": "2016-09-05T13:09:19Z"
+		},
+		{
+			"checksumSHA1": "3whhUQgHbzSoO16vbx/XMCkg6Bs=",
+			"path": "github.com/influxdata/influxdb/pkg/escape",
+			"revision": "be41e41caecaa528b3cdeec872f0fd95528b315d",
+			"revisionTime": "2016-09-05T13:09:19Z"
 		},
 		{
 			"checksumSHA1": "mrmfY0cVu7jvgoIuTRaR8yVVh/M=",

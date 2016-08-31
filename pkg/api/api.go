@@ -295,6 +295,9 @@ func (hs *HttpServer) registerRoutes() {
 		// error test
 		r.Get("/metrics/error", wrap(GenerateError))
 
+        // export as csv
+        r.Post("/exportcsv", ExportCSV)
+
 	}, reqSignedIn)
 
 	// admin api
