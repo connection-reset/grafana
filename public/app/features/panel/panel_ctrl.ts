@@ -212,6 +212,7 @@ export class PanelCtrl {
 
   updateColumnSpan(span) {
     this.panel.span = Math.min(Math.max(Math.floor(this.panel.span + span), 1), 12);
+    this.panel.autoresize = false;
     this.row.panelSpanChanged();
 
     this.$timeout(() => {

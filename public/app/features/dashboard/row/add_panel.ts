@@ -85,6 +85,7 @@ export class AddPanelCtrl {
       id: null,
       title: config.new_panel_title,
       span: span < defaultSpan && span > 0 ? span : defaultSpan,
+      autoresize: true,
       type: panelPluginInfo.id,
     };
 

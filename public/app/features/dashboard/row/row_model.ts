@@ -49,6 +49,7 @@ export class DashboardRow {
   }
 
   panelSpanChanged(alwaysSendEvent?) {
+    this.resizePanels();
     var oldSpan = this.span;
     this.updateRowSpan();
 
@@ -58,30 +59,95 @@ export class DashboardRow {
   }
 
   addPanel(panel) {
-    var rowSpan = this.span;
-    var panelCount = this.panels.length;
-    var space = (12 - rowSpan) - panel.span;
-
-    // try to make room of there is no space left
-    if (space <= 0) {
-      if (panelCount === 1) {
-        this.panels[0].span = 6;
-        panel.span = 6;
-      } else if (panelCount === 2) {
-        this.panels[0].span = 4;
-        this.panels[1].span = 4;
-        panel.span = 4;
-      } else if (panelCount === 3) {
-        this.panels[0].span = 3;
-        this.panels[1].span = 3;
-        this.panels[2].span = 3;
-        panel.span = 3;
-      }
-    }
-
+    console.log("addPanel");
     this.panels.push(panel);
     this.events.emit('panel-added', panel);
     this.panelSpanChanged();
+  }
+
+  resizePanels() {
+    console.log("resizePanels");
+    var resize = function(panels) {
+      var resizeablePanels = _.filter(panels, {autoresize: true});
+      var fixedSpanPanels = _.filter(panels, {autoresize: false});
+      var availableRowSpan = _.reduce(fixedSpanPanels, (acc, p) => {return acc - p.span;}, 12);
+
+      _.each(resizeablePanels, p => {
+        p.span = p.minSpan || 1;
+        availableRowSpan -= p.span;
+      });
+
+      for (var _c = 0; _c < 100; _c++) {
+        var groups = [];
+        _.each(resizeablePanels, p => {
+          if (groups[p.span] === undefined) {
+            groups[p.span] = [];
+          }
+          groups[p.span].push(p);
+        });
+
+        var spans = [];
+        _.each(Object.keys(groups), i => {
+          spans.push(parseInt(i));
+        });
+        spans.sort();
+
+        if (spans.length > 1) {
+          for (var _i = 0; _i < groups[spans[0]].length; _i++) {
+            var p = groups[spans[0]][_i];
+            var span = Math.min(p.span + Math.floor(availableRowSpan / (groups[spans[0]].length - _i)), spans[1]);
+            if (span <= 0) {
+              span = 1;
+            }
+            if (span < p.minSpan) {
+              span = p.minSpan;
+            }
+            availableRowSpan += (p.span - span);
+            p.span = span;
+          }
+        } else {
+          for (var _j = 0; _j < groups[spans[0]].length; _j++) {
+            var p2 = groups[spans[0]][_j];
+            var span2 = p2.span + Math.floor(availableRowSpan / (groups[spans[0]].length - _j));
+            if (span2 <= 0) {
+              span2 = 1;
+            }
+            if (span2 < p2.minSpan) {
+              span2 = p2.minSpan;
+            }
+            availableRowSpan += (p2.span - span2);
+            p2.span = span2;
+          }
+        }
+        if (availableRowSpan <= 0) {
+          break;
+        }
+      }
+      return availableRowSpan;
+    };
+
+    var rows = [this.panels.slice()];
+    console.log(rows);
+    for (var _k = 0; _k < 100; _k++) {
+      var toolong = -1;
+      for (var _l = 0; _l < rows.length; _l++) {
+        var r = resize(rows[_l]);
+        if (r < 0) {
+          toolong = _l;
+          break;
+        }
+      }
+      if (toolong < 0) {
+        break;
+      }
+      var _pp = rows[toolong].pop();
+      if (rows[toolong + 1] === undefined) {
+        rows[toolong + 1] = [];
+      }
+      rows[toolong + 1].unshift(_pp);
+      console.log(rows);
+    }
+    console.log(this.panels);
   }
 
   removePanel(panel, ask?) {
