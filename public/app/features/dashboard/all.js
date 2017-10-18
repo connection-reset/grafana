@@ -14,6 +14,7 @@ define([
   './time_srv',
   './unsavedChangesSrv',
   './unsaved_changes_modal',
+  './exportcsv/exportcsv',
   './timepicker/timepicker',
   './graphiteImportCtrl',
   './impression_store',
