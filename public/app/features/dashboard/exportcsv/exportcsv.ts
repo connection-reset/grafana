@@ -9,13 +9,19 @@ export class ExportCsvCtrl {
 
   dashboard: any;
   panel: any;
+  loading: any;
 
   /** @ngInject */
   constructor(private $q, private templateSrv, private timeSrv, private datasourceSrv, private contextSrv, private backendSrv) {
+    this.loading = false;
   }
 
   export() {
     console.log("export as csv");
+    if (this.loading) {
+      return;
+    }
+    this.loading = true;
     var timeRange = this.timeSrv.timeRange(true);
     var filename = this.dashboard.meta.slug + "_" +
                    timeRange.from.toISOString() + "-" +
@@ -61,6 +67,7 @@ export class ExportCsvCtrl {
     this.$q.all(queries)
     .then(queries => this.backendSrv.post("/api/exportcsv", queries))
     .then(data => {
+      this.loading = false;
       fileExport.saveSaveBlob(data, filename);
     });
   }
