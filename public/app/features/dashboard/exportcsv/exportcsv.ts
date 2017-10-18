@@ -40,7 +40,7 @@ export class ExportCsvCtrl {
         var dsName = target.datasource || panel.datasource || config.defaultDatasource;
         queries.push(this.datasourceSrv.get(dsName).then(datasource => {
           var scopedVars = {
-            __interval: {value: datasource.interval || "1s"},
+            __interval: {value: panel.interval || datasource.interval || "1s"},
             interval: undefined,
             timeFilter: undefined,
           };
