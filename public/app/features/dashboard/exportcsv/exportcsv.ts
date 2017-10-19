@@ -69,6 +69,9 @@ export class ExportCsvCtrl {
     .then(data => {
       this.loading = false;
       fileExport.saveSaveBlob(data, filename);
+    })
+    .catch(reason => {
+      this.loading = false;
     });
   }
 }
