@@ -53,9 +53,10 @@ export class ExportCsvCtrl {
           var timeFilter = datasource.getTimeFilter(options);
           scopedVars.timeFilter = {value: timeFilter};
           query = this.templateSrv.replace(query, scopedVars);
+          var measurement = target.alias || target.measurement;
           return {
             database: datasource.database,
-            measurement: target.measurement,
+            measurement: measurement,
             query: query,
             datasource: datasource.name,
             org: orgId,
