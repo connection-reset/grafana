@@ -144,7 +144,7 @@ class MetricsPanelCtrl extends PanelCtrl {
   }
 
   calculateInterval() {
-    var intervalOverride;
+    var intervalOverride = this.$q.resolve();
 
     if (this.panel.interval) {
       intervalOverride = this.$q.resolve(this.templateSrv.replace(this.panel.interval, this.panel.scopedVars));
